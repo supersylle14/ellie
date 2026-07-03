@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ellie fylder 9 – Gavekort</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap');
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:#f3ece2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    font-family:'Quicksand', sans-serif;
+  }
+
+  .card{
+    position:relative;
+    width:900px;
+    height:540px;
+    border-radius:28px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 88% 10%, #FFE3EC 0%, transparent 40%),
+      radial-gradient(circle at 6% 92%, #D9F2E4 0%, transparent 42%),
+      radial-gradient(circle at 92% 88%, #E7DBFA 0%, transparent 38%),
+      #FFF9F2;
+    box-shadow:0 30px 60px rgba(90,60,80,0.18);
+    border:3px solid #fff;
+    outline:2px dashed #F2B8C6;
+    outline-offset:-14px;
+  }
+
+  .sticker{
+    position:absolute;
+    font-size:26px;
+    z-index:4;
+    filter:drop-shadow(0 2px 0 rgba(0,0,0,0.08));
+  }
+  .st1{ top:22px; left:26px; transform:rotate(-10deg); font-size:24px;}
+  .st2{ top:26px; left:250px; transform:rotate(8deg); font-size:20px;}
+  .st3{ bottom:26px; left:250px; transform:rotate(6deg); font-size:20px;}
+  .st4{ top:60%; right:26px; transform:rotate(-8deg); font-size:24px;}
+
+  .content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    height:100%;
+  }
+
+  /* ---------- LEFT: mascot ---------- */
+  .mascot-col{
+    width:250px;
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+    border-right:3px dashed #F2C9D6;
+    position:relative;
+  }
+
+  .mascot{
+    width:150px;
+    height:150px;
+    margin-bottom:14px;
+    filter:drop-shadow(0 6px 0 rgba(0,0,0,0.06));
+  }
+
+  .age-badge{
+    font-family:'Baloo 2', cursive;
+    font-weight:800;
+    font-size:26px;
+    color:#B5537A;
+    text-align:center;
+    line-height:1.15;
+  }
+
+  .cute-tag{
+    margin-top:10px;
+    background:#FFE3EC;
+    color:#B5537A;
+    font-size:11px;
+    letter-spacing:0.5px;
+    padding:5px 12px;
+    border-radius:20px;
+    font-weight:700;
+    border:2px solid #F2B8C6;
+  }
+
+  /* ---------- RIGHT: content panel ---------- */
+  .panel{
+    flex:1;
+    padding:38px 42px 30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+
+  .top{ display:flex; flex-direction:column; gap:8px; }
+
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:3px;
+    color:#C97AA0;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+
+  h1{
+    margin:0;
+    font-family:'Baloo 2', cursive;
+    font-weight:800;
+    font-size:42px;
+    line-height:1.1;
+    color:#6B4A63;
+  }
+  h1 span{ color:#E58AA9; }
+
+  .subrizz{
+    font-size:13px;
+    color:#B5537A;
+    font-weight:700;
+    letter-spacing:0.3px;
+    margin-top:2px;
+  }
+
+  .quest{
+    background:#fff;
+    border:3px solid #F2C9D6;
+    border-radius:18px;
+    padding:18px 22px;
+    margin-top:16px;
+    box-shadow:0 6px 0 #F6DDE6;
+  }
+  .quest-title{
+    font-family:'Baloo 2', cursive;
+    font-size:17px;
+    color:#B5537A;
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  .quest-body{
+    font-size:15.5px;
+    line-height:1.55;
+    color:#5B4B57;
+    margin:0;
+    font-weight:600;
+  }
+  .quest-body b{
+    background:#FFE9A8;
+    padding:0 4px;
+    border-radius:4px;
+  }
+
+  .footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:18px;
+  }
+  .from{
+    font-family:'Baloo 2', cursive;
+    font-size:16px;
+    color:#6B4A63;
+    font-weight:700;
+  }
+
+  .stamp{
+    font-family:'Baloo 2', cursive;
+    font-size:13px;
+    font-weight:700;
+    color:#fff;
+    background:#E58AA9;
+    border-radius:16px;
+    padding:8px 14px;
+    letter-spacing:0.3px;
+    box-shadow:0 4px 0 #C9678B;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="sticker st1">✨</div>
+  <div class="sticker st2">🐰</div>
+  <div class="sticker st3">🎨</div>
+  <div class="sticker st4">💗</div>
+
+  <div class="content">
+
+    <div class="mascot-col">
+      <svg class="mascot" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <!-- cute Labubu-style bunny-eared creature -->
+        <ellipse cx="42" cy="26" rx="9" ry="22" fill="#F3D9F7" stroke="#6B4A63" stroke-width="2.5"/>
+        <ellipse cx="78" cy="26" rx="9" ry="22" fill="#F3D9F7" stroke="#6B4A63" stroke-width="2.5"/>
+        <ellipse cx="42" cy="28" rx="4" ry="13" fill="#F7B8D6"/>
+        <ellipse cx="78" cy="28" rx="4" ry="13" fill="#F7B8D6"/>
+        <ellipse cx="60" cy="70" rx="40" ry="34" fill="#FBEFE0" stroke="#6B4A63" stroke-width="2.5"/>
+        <circle cx="47" cy="68" r="5" fill="#6B4A63"/>
+        <circle cx="73" cy="68" r="5" fill="#6B4A63"/>
+        <path d="M52 84 Q60 92 68 84" stroke="#6B4A63" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M40 78 l-8 4 M80 78 l8 4" stroke="#6B4A63" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="35" cy="80" rx="5" ry="3.5" fill="#F7B8D6" opacity="0.8"/>
+        <ellipse cx="85" cy="80" rx="5" ry="3.5" fill="#F7B8D6" opacity="0.8"/>
+        <path d="M60 44 l3 5 l-6 0 z" fill="#6B4A63"/>
+      </svg>
+      <div class="age-badge">9 ÅR<br>TILLYKKE</div>
+      <div class="cute-tag">certified cutie 💫</div>
+    </div>
+
+    <div class="panel">
+      <div class="top">
+        <div class="eyebrow">Tillykke med fødselsdagen</div>
+        <h1>Ellie bliver <span>9 år!</span> ✨</h1>
+        <div class="subrizz">no thoughts, just vibes og masser af kærlighed 🐾</div>
+      </div>
+
+      <div class="quest">
+        <div class="quest-title">Hemmelig mission: Mal &amp; skab 🎨🐇</div>
+        <p class="quest-body">
+          Onklerne har en overraskelse til dig: en tur til <b>Creative Space</b>, hvor I skal male jeres helt eget porcelæn sammen. Perfekt til dig, som elsker dyr, kreative projekter og søde væsner ✨🐰
+        </p>
+      </div>
+
+      <div class="footer">
+        <div class="from">Fra dine onkler 💗</div>
+        <div class="stamp">GAVE ✓ SO CUTE</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
