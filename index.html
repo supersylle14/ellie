@@ -184,9 +184,124 @@
     letter-spacing:0.3px;
     box-shadow:0 4px 0 #C9678B;
   }
+  @keyframes popIn{
+    0%{ transform:scale(0.7); opacity:0; }
+    100%{ transform:scale(1); opacity:1; }
+  }
+  @keyframes wiggle{
+    0%,100%{ transform:rotate(0deg); }
+    25%{ transform:rotate(-4deg); }
+    75%{ transform:rotate(4deg); }
+  }
+
+  #pollOverlay{
+    position:fixed;
+    inset:0;
+    background:rgba(107,74,99,0.45);
+    backdrop-filter:blur(3px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+  }
+
+  #pollModal{
+    position:relative;
+    width:420px;
+    min-height:300px;
+    background:linear-gradient(160deg, #FFF6FA, #F3E7FC);
+    border-radius:26px;
+    border:3px solid #fff;
+    box-shadow:0 20px 50px rgba(107,74,99,0.35);
+    padding:32px 28px;
+    text-align:center;
+    animation:popIn 0.35s ease;
+    overflow:hidden;
+  }
+
+  #pollModal h2{
+    font-family:'Baloo 2', cursive;
+    font-size:26px;
+    color:#6B4A63;
+    margin:6px 0 6px;
+  }
+
+  #pollModal .pollSub{
+    font-size:13px;
+    color:#B5537A;
+    font-weight:700;
+    margin-bottom:22px;
+  }
+
+  #pollButtons{
+    position:relative;
+    height:120px;
+  }
+
+  .pollBtn{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    font-size:18px;
+    border:none;
+    border-radius:16px;
+    padding:14px 34px;
+    cursor:pointer;
+    box-shadow:0 6px 0 rgba(0,0,0,0.08);
+  }
+
+  #btnJa{
+    background:#8FE3B5;
+    color:#1F5C3D;
+    position:absolute;
+    left:50%;
+    top:20px;
+    transform:translateX(-115%);
+  }
+
+  #btnNej{
+    background:#F7A8C4;
+    color:#7A2748;
+    position:absolute;
+    left:50%;
+    top:20px;
+    transform:translateX(15%);
+    transition:top 0.25s ease, left 0.25s ease;
+  }
+
+  #pollNote{
+    margin-top:16px;
+    font-size:13px;
+    color:#9A7593;
+    min-height:18px;
+    font-weight:600;
+  }
+
+  #pollDone{
+    display:none;
+  }
+  #pollDone h2{ animation:wiggle 0.6s ease 2; }
 </style>
 </head>
 <body>
+
+<div id="pollOverlay">
+  <div id="pollModal">
+    <div id="pollQuestion">
+      <div class="cute-tag" style="margin-bottom:10px;">lille afstemning 💌</div>
+      <h2>Er mine onkler søde?</h2>
+      <div class="pollSub">tryk på dit svar!</div>
+      <div id="pollButtons">
+        <button class="pollBtn" id="btnJa">Ja 💚</button>
+        <button class="pollBtn" id="btnNej">Nej</button>
+      </div>
+      <div id="pollNote"></div>
+    </div>
+    <div id="pollDone">
+      <h2>Yay! 🎉</h2>
+      <div class="pollSub" style="margin-bottom:0;">det rigtige svar, selvfølgelig 💗</div>
+    </div>
+  </div>
+</div>
 
 <div class="card">
 
@@ -239,6 +354,58 @@
 
   </div>
 </div>
+
+<script>
+  const modal = document.getElementById('pollModal');
+  const btnNej = document.getElementById('btnNej');
+  const btnJa = document.getElementById('btnJa');
+  const note = document.getElementById('pollNote');
+  const messages = [
+    "øhh, prøv igen 👀",
+    "nej er ikke en mulighed hihi",
+    "den knap er ikke til at fange 🏃‍♀️",
+    "onklerne er altså MEGA søde",
+    "du kan ikke klikke det du ikke kan nå 😌",
+    "giv op, prøv 'Ja' i stedet 💚"
+  ];
+  let tries = 0;
+
+  function dodge(){
+    const maxLeftPct = 78;
+    const minLeftPct = 10;
+    const maxTop = 60;
+    const minTop = 0;
+    const newLeft = Math.random() * (maxLeftPct - minLeftPct) + minLeftPct;
+    const newTop = Math.random() * (maxTop - minTop) + minTop;
+    btnNej.style.left = newLeft + '%';
+    btnNej.style.top = newTop + 'px';
+    btnNej.style.transform = 'translateX(0)';
+  }
+
+  function taunt(){
+    tries++;
+    note.textContent = messages[Math.min(tries-1, messages.length-1)];
+    dodge();
+  }
+
+  btnNej.addEventListener('mouseenter', taunt);
+  btnNej.addEventListener('click', function(e){
+    e.preventDefault();
+    taunt();
+  });
+  btnNej.addEventListener('touchstart', function(e){
+    e.preventDefault();
+    taunt();
+  });
+
+  btnJa.addEventListener('click', function(){
+    document.getElementById('pollQuestion').style.display = 'none';
+    document.getElementById('pollDone').style.display = 'block';
+    setTimeout(function(){
+      document.getElementById('pollOverlay').style.display = 'none';
+    }, 1600);
+  });
+</script>
 
 </body>
 </html>
